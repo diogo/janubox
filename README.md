@@ -1,0 +1,4 @@
+janubox
+=======
+
+An directory synchronizer. 
