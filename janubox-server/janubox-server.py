@@ -1,10 +1,10 @@
 from flask import Flask
-from flask.ext.restful import Api
+from flask.ext import restful.Api
 import janubox.server.add_resources
-from janubox.server import database, DATABASE_URI
+from janubox.server.database import database, DATABASE_URI
 
 app = Flask(__name__)
-api = Api(app)
+api = restful.Api(app)
 
 janubox.server.add_resources(api)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
