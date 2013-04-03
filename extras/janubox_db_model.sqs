@@ -5,7 +5,7 @@
         <schema><![CDATA[]]></schema>
         <location>
             <x>407.00</x>
-            <y>478.00</y>
+            <y>494.00</y>
         </location>
         <size>
             <width>164.00</width>
@@ -75,7 +75,7 @@
         <schema><![CDATA[]]></schema>
         <location>
             <x>429.00</x>
-            <y>558.00</y>
+            <y>574.00</y>
         </location>
         <size>
             <width>164.00</width>
@@ -102,16 +102,16 @@
             <uid><![CDATA[F9868F01-822C-4506-9E57-0EC9FEEB22D9]]></uid>
         </SQLField>
         <SQLField>
-            <name><![CDATA[password]]></name>
+            <name><![CDATA[hashcode]]></name>
             <type><![CDATA[TEXT]]></type>
             <didChangeNameDuringValidation><![CDATA[0]]></didChangeNameDuringValidation>
             <notNull><![CDATA[1]]></notNull>
-            <temporaryOriginalName><![CDATA[id_1]]></temporaryOriginalName>
+            <temporaryOriginalName><![CDATA[hash]]></temporaryOriginalName>
             <uid><![CDATA[22101773-4A2B-48A4-B1D7-51F4B4919A52]]></uid>
         </SQLField>
         <SQLField>
             <name><![CDATA[admin]]></name>
-            <type><![CDATA[BOOL]]></type>
+            <type><![CDATA[BOOLEAN]]></type>
             <didChangeNameDuringValidation><![CDATA[0]]></didChangeNameDuringValidation>
             <notNull><![CDATA[1]]></notNull>
             <temporaryOriginalName><![CDATA[id_1]]></temporaryOriginalName>
@@ -170,7 +170,7 @@
         </SQLField>
         <SQLField>
             <name><![CDATA[deleted]]></name>
-            <type><![CDATA[BOOL]]></type>
+            <type><![CDATA[BOOLEAN]]></type>
             <didChangeNameDuringValidation><![CDATA[0]]></didChangeNameDuringValidation>
             <notNull><![CDATA[1]]></notNull>
             <temporaryOriginalName><![CDATA[alive]]></temporaryOriginalName>
@@ -189,7 +189,7 @@
         </location>
         <size>
             <width>202.00</width>
-            <height>120.00</height>
+            <height>140.00</height>
         </size>
         <zorder>2</zorder>
         <SQLField>
@@ -220,7 +220,7 @@
         </SQLField>
         <SQLField>
             <name><![CDATA[data]]></name>
-            <type><![CDATA[BYTEA]]></type>
+            <type><![CDATA[TEXT]]></type>
             <didChangeNameDuringValidation><![CDATA[0]]></didChangeNameDuringValidation>
             <notNull><![CDATA[0]]></notNull>
             <temporaryOriginalName><![CDATA[id_1]]></temporaryOriginalName>
@@ -257,6 +257,14 @@
             <notNull><![CDATA[1]]></notNull>
             <temporaryOriginalName><![CDATA[id_1]]></temporaryOriginalName>
             <uid><![CDATA[EF3E5F08-8E1A-4B6C-B143-3955CEF0EFFD]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[commit]]></name>
+            <type><![CDATA[TIMESTAMP]]></type>
+            <didChangeNameDuringValidation><![CDATA[0]]></didChangeNameDuringValidation>
+            <notNull><![CDATA[1]]></notNull>
+            <temporaryOriginalName><![CDATA[id_1]]></temporaryOriginalName>
+            <uid><![CDATA[28CD5B2F-70E3-43DA-8083-FD7C7FDF6476]]></uid>
         </SQLField>
         <didChangeNameDuringValidation><![CDATA[0]]></didChangeNameDuringValidation>
         <temporaryOriginalName><![CDATA[revision]]></temporaryOriginalName>
@@ -428,9 +436,9 @@ LWE0hoaG
         <SourceSidebarWidth><![CDATA[276.000000]]></SourceSidebarWidth>
         <uid><![CDATA[A77BEA0B-E901-40FF-B033-2600A38DC652]]></uid>
         <windowHeight><![CDATA[973.000000]]></windowHeight>
-        <windowLocationX><![CDATA[79.000000]]></windowLocationX>
-        <windowLocationY><![CDATA[76.000000]]></windowLocationY>
-        <windowWidth><![CDATA[997.000000]]></windowWidth>
+        <windowLocationX><![CDATA[1141.000000]]></windowLocationX>
+        <windowLocationY><![CDATA[54.000000]]></windowLocationY>
+        <windowWidth><![CDATA[670.000000]]></windowWidth>
     </SQLDocumentInfo>
     <AllowsIndexRenamingOnInsert><![CDATA[1]]></AllowsIndexRenamingOnInsert>
     <containerName><![CDATA[model controller orginal container]]></containerName>

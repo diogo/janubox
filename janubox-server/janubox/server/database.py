@@ -9,24 +9,43 @@ DATABASE_URI = 'postgresql+psycopg2://user:password@host:port/dbname'
 database = SQLAlchemy()
 
 class File(database.Model):
-	pass
+	id = db.Column(db.Integer, primary_key=True)	
+	base_directory_id = db.Column(db.Integer, db.ForeignKey('base_directory.id'))
+	deleted = db.Column(db.Boolean)
+	uri = db.Column(db.Text)
 
 class BaseDirectory(database.Model):
-	pass
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.Text)
 
 class Revision(database.Model):
-	pass
+	id = db.Column(db.Integer, primary_key=True)
+	file_id = db.Column(db.Integer, db.ForeignKey('file.id'))
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	operation_id = db.Column(db.Integer, db.ForeignKey('operation.id'))
+	data = db.Column(db.Text)
+	commit = db.Column(db.DateTime)
 
 class Operation(database.Model):
-	pass
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.Text)
 
 class User(database.Model):
-	pass
-
+	id = db.Column(db.Integer, primary_key=True)
+	login = db.Column(db.Text)
+	hashcode = db.Column(db.Text)
+	admin = db.Column(db.Boolean)
 
 class JanuBoxDBError(Exception):
 	pass
 
+
+
+
+
+
+
+"""
 class JanuBoxDB(object):
 	def __init__(self, dbname, user=None, password=None):
 		self._dbname = dbname
@@ -74,3 +93,4 @@ class JanuBoxDB(object):
 
 		self._con.close()
 		return ret
+"""
