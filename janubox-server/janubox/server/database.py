@@ -1,6 +1,29 @@
 import psycopg2
 from messages import *
 
+
+from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
+
+DATABASE_URI = 'postgresql+psycopg2://user:password@host:port/dbname'
+database = SQLAlchemy()
+
+class File(database.Model):
+	pass
+
+class BaseDirectory(database.Model):
+	pass
+
+class Revision(database.Model):
+	pass
+
+class Operation(database.Model):
+	pass
+
+class User(database.Model):
+	pass
+
+
 class JanuBoxDBError(Exception):
 	pass
 
