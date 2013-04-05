@@ -1,7 +1,3 @@
-import psycopg2
-from messages import *
-
-
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -33,8 +29,17 @@ class Operation(database.Model):
 class User(database.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	login = db.Column(db.Text)
-	hashcode = db.Column(db.Text)
+	key = db.Column(db.Text)
 	admin = db.Column(db.Boolean)
+
+class Permission(database.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	base_directory_id = db.Column(db.Integer, db.ForeignKey('base_directory.id'))
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	write = db.Column(db.Boolean)
+	admin = db.Column(db.Boolean)
+
+
 
 class JanuBoxDBError(Exception):
 	pass
@@ -46,6 +51,9 @@ class JanuBoxDBError(Exception):
 
 
 """
+import psycopg2
+from messages import *
+
 class JanuBoxDB(object):
 	def __init__(self, dbname, user=None, password=None):
 		self._dbname = dbname
