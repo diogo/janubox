@@ -1,55 +1,113 @@
 import json
 from flask import Flask, request
-from flask.ext.restful import Resource
+from flask.ext.restful import Resource, reqparse
 from janubox.server.messages import *
-from janubox.server.database import JanuBoxDB
+from janubox.server.database import *
 
-class Authorize(Resource):
-	def get(self, login, password):
-		pass
+parser = reqparse.RequestParser()
+parser.add_argument('key', type=str)
+
+def read_auth(key, id, is_file=True):
+	pass
+
+def write_auth(key, id, is_file=True):
+	pass
+
+def admin_auth(key, bdir_id=False):
+	pass
+
+def super_auth(key):
+	pass
+
+def auth(key, bdir_id, flag):
+	if flag == 'read':
+		 = User.query.filter(User.key == 'key',
+							Permission.user_id == User.id,
+							Permission.bdir_id == 'bdir_id').first()
+
+class Files(Resource):
+	def post(self):
+		args = parser.parse_args()
+		if write_auth(args['key'], args['bdir_id'], False):
+			pass
+
+	def get(self):
+		args = parser.parse_args()
+		if read_auth(args['key'], args['bdir_id'], False):
+			pass
 
 class File(Resource):
-	def get(self):
-		pass
+	def get(self, file_id):
+		args = parser.parse_args()
+		if read_auth(args['key'], file_id):
+			pass
 
+	def put(self, file_id):
+		args = parser.parse_args()
+		if write_auth(args['key'], file_id):
+			pass
+
+	def delete(self, file_id):
+		args = parser.parse_args()
+		if write_auth(args['key'], file_id):
+			pass
+
+class BaseDirectories(Resource):
 	def post(self):
-		pass
+		args = parser.parse_args()
+		if super_auth(args['key']):
+			pass
 
-	def put(self):
-		pass
-
-	def delete(self):
-		pass
+	def get(self):
+		args = parser.parse_args()
+		if super_auth(args['key']):
+			pass
 
 class BaseDirectory(Resource):
-	def get(self):
-		pass
+	def get(self, bdir_id):
+		args = parser.parse_args()
+		if read_auth(args['key'], bdir_id, False):
+			pass
 
+	def put(self, bdir_id):
+		args = parser.parse_args()
+		if admin_auth(args['key'], bdir_id):
+			pass
+
+	def delete(self, bdir_id):
+		args = parser.parse_args()
+		if admin_auth(args['key'], bdir_id):
+			pass
+
+class Users(Resource):
 	def post(self):
-		pass
+		args = parser.parse_args()
+		if super_auth(args['key']):
+			pass
 
-	def put(self):
-		pass
-
-	def delete(self):
-		pass
+	def get(self):
+		args = parser.parse_args()
+		if super_auth(args['key']):
+			pass
+		elif read_auth(args['key']):
+			pass
 
 class User(Resource):
-	def get(self):
+	def get(self, user_id):
 		pass
 
-	def post(self):
+	def put(self, user_id):
 		pass
 
-	def put(self):
-		pass
-
-	def delete(self):
+	def delete(self, user_id):
 		pass
 
 
 def add_resources(api):
-	api.add_resource(Authorize, '/user/<string:login>/<string:password>/authorize')
+	api.add_resource(Files, '/files')
+	api.add_resource(File, '/files/<string:file_id>')
+	api.add_resource(BaseDirectories, '/base_dirs')
+	api.add_resource(BaseDirectory, '/base_dirs/<string:bdir_id>')
 
 
 
@@ -65,6 +123,7 @@ def add_resources(api):
 
 
 
+"""
 class JanuBoxClient(object):
 	def __init__(self, addr=None, ip=None, user=None):
 		self.addr = addr
@@ -118,4 +177,4 @@ class JanuBoxServer(SocketServer.BaseRequestHandler):
 			if JanuBoxDB.add_file(data['file_uri'], data['base_directory'], data['data']):
 				self._send_broadcast(data)
 			else:
-
+"""
